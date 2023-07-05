@@ -2,109 +2,45 @@
 <html>
  <head>
   <meta charset="utf-8">
-  <title>A and B basic interface</title>
+  <title>2-iface</title>
   <style>
   </style>
-  <script>
-    class AandB{
-        static a = 'Value of a';
-        static b = 'value of b';
-        /*
-        Initial state
-        */
-        constructor(){
-            this.reset();
-        }
-    
-        getA(){
-            return this.a;
-        }
-        
-        getB(){
-            return this.b;
-        }
-        
-        /*
-        setA(newValue)    
-        */
-        setA(){
-          this.a = "New value of A";
-          return true  
-        }
-        
-        /*
-        setB(newValue)    
-        */
-        setB(){
-          this.b = "New value of B"
-          return true
-        }
-        
-        reset(){
-          console.log('reset')
-          this.a = this.constructor.a
-          this.b = this.constructor.b;
-        }
-    }
-        
-  </script>
+  <script src="AandB.js"></script>
+  <script src="Iface.js"></script>
  </head>
 <body>
-  <div style="border:1px solid #ddd; padding:0.5em">
-    <header>State</header>
-    <hr />
-    <p style="padding:0.5em;margin:0.5em">Value of A is: <span id="value-a" style="border:1px solid orange; padding: 0.5em"></span></p>
-    <p style="padding:0.5em;margin:0.5em">Value of B is: <span id="value-b" style="border:1px solid orange; padding: 0.5em"></span></p> 
+  <h1>2-ifcae - Sample Two value OOP JavaScript interface</h1>
+  <div style="border:1px solid #f2f2f2; padding:1em;">
+    <header>
+      <h2>State</h2>
+    </header>
+    <hr /> 
+        
+        <p style="padding:0.5em;margin:0.5em;border:1px solid orange;">Value of A is:<span id="value-a"></span>
+        </p>    
+    <p style="padding:0.5em;margin:0.5em;border:1px solid orange;">Value of B is: <span id="value-b"></span></p> 
   </div>
-  <div style="border:1px solid #ddd; padding:0.5em; background:#ffddff; margin-top:0.5em">
-    <header>Methods</header>
+  <div style="border:1px solid #ddd; padding:1em; background:#f2f2f2; margin-top:0.5em">
+    <header>
+        Methods
+    </header>
     <hr />
-    <button id = "set-a">Set A</button>
-    <button id = "set-b">Set B</button>
-    <button id = "reset">Reset values</button>
+    <div style="padding:1em">
+      <input type="input" value="" placeholder="set value of A" id="inp-a" />
+      <button id = "set-a">Set A</button>
+    </div>  
+    <div style="padding:1em">  
+        <input type="input" value="" placeholder="set value of B" id="inp-b" />    
+        <button id = "set-b">Set B</button>
+    </div>
+    <div style="padding:1em">
+        <button id = "reset">Reset values</button>    
+    </div>
   </div>
   
   <script>
-      // instantiate 
-    let ab = new AandB();
-    let a = document.getElementById('value-a');
-    let b = document.getElementById('value-b');
-    let reset = document.getElementById('reset')
-    let setA = document.getElementById('set-a')
-    let setB = document.getElementById('set-b')
-
-    a.innerHTML = ab.getA()
-    b.innerHTML = ab.getB()
-    
-    setA.addEventListener(
-        'click',
-        function(e){
-            ab.setA();
-            a.innerHTML = ab.getA();
-            return false;
-        },
-        false
-    )
-    setB.addEventListener(
-        'click',
-        function(e){
-          ab.setB();
-          b.innerHTML = ab.getB();
-        },
-        false
-    )
-    
-    reset.addEventListener(
-        'click',
-        function(e){
-            ab.reset()
-            a.innerHTML = ab.getA()
-            b.innerHTML = ab.getB()
-            return false
-        },
-        false
-    )
-
+    // activate the interface
+    new Iface();
   </script>
   
 </body>
