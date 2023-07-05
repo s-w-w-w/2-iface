@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>A and B basic interface</title>
+  <style>
+  </style>
+  <script>
+    class AandB{
+        static a = 'Value of a';
+        static b = 'value of b';
+        /*
+        Initial state
+        */
+        constructor(){
+            this.reset();
+        }
+    
+        getA(){
+            return this.a;
+        }
+        
+        getB(){
+            return this.b;
+        }
+        
+        /*
+        setA(newValue)    
+        */
+        setA(){
+          this.a = "New value of A";
+          return true  
+        }
+        
+        /*
+        setB(newValue)    
+        */
+        setB(){
+          this.b = "New value of B"
+          return true
+        }
+        
+        reset(){
+          console.log('reset')
+          this.a = this.constructor.a
+          this.b = this.constructor.b;
+        }
+    }
+        
+  </script>
+ </head>
+<body>
+  <div style="border:1px solid #ddd; padding:0.5em">
+    <header>State</header>
+    <hr />
+    <p style="padding:0.5em;margin:0.5em">Value of A is: <span id="value-a" style="border:1px solid orange; padding: 0.5em"></span></p>
+    <p style="padding:0.5em;margin:0.5em">Value of B is: <span id="value-b" style="border:1px solid orange; padding: 0.5em"></span></p> 
+  </div>
+  <div style="border:1px solid #ddd; padding:0.5em; background:#ffddff; margin-top:0.5em">
+    <header>Methods</header>
+    <hr />
+    <button id = "set-a">Set A</button>
+    <button id = "set-b">Set B</button>
+    <button id = "reset">Reset values</button>
+  </div>
+  
+  <script>
+      // instantiate 
+    let ab = new AandB();
+    let a = document.getElementById('value-a');
+    let b = document.getElementById('value-b');
+    let reset = document.getElementById('reset')
+    let setA = document.getElementById('set-a')
+    let setB = document.getElementById('set-b')
+
+    a.innerHTML = ab.getA()
+    b.innerHTML = ab.getB()
+    
+    setA.addEventListener(
+        'click',
+        function(e){
+            ab.setA();
+            a.innerHTML = ab.getA();
+            return false;
+        },
+        false
+    )
+    setB.addEventListener(
+        'click',
+        function(e){
+          ab.setB();
+          b.innerHTML = ab.getB();
+        },
+        false
+    )
+    
+    reset.addEventListener(
+        'click',
+        function(e){
+            ab.reset()
+            a.innerHTML = ab.getA()
+            b.innerHTML = ab.getB()
+            return false
+        },
+        false
+    )
+
+  </script>
+  
+</body>
+</html>
